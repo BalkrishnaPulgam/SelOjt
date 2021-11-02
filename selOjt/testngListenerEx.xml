@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="classes" thread-count="1" verbose="10">
+<listeners>
+<listener class-name="testNGPractice.SetRetry"></listener>
+<listener class-name="testNGPractice.ListenerEx"></listener>
+</listeners>
+  <test name="Test">
+ <!--  <groups>
+  <run>
+  <include name="login"></include>
+   <exclude name="dash"></exclude> 
+  </run>
+  </groups> -->
+    <classes>
+      <class name="testNGPractice.DemoTestXml"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
