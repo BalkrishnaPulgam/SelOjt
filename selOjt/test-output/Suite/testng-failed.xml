@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="1" guice-stage="DEVELOPMENT" verbose="10" name="Failed suite [Suite]" parallel="classes">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <listeners>
-    <listener class-name="testNGPractice.SetRetry"/>
-    <listener class-name="testNGPractice.ListenerEx"/>
+    <listener class-name="seleniumListeners.TestNGListener"/>
+    <listener class-name="seleniumListeners.SetRetry"/>
   </listeners>
-  <test thread-count="1" verbose="10" name="Test(failed)" parallel="classes">
+  <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="testNGPractice.DemoTestXml">
+      <class name="seleniumListeners.ListenerTest">
         <methods>
-          <include name="verifyCourses"/>
-          <include name="verifyDashboardTitle"/>
-          <include name="verifyLogo"/>
-          <include name="verifyLoginTitle"/>
-          <include name="verifyValidLogin"/>
+          <include name="setup"/>
+          <include name="test01"/>
         </methods>
-      </class> <!-- testNGPractice.DemoTestXml -->
+      </class> <!-- seleniumListeners.ListenerTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
