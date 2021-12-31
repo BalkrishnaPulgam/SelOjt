@@ -2,11 +2,13 @@ package guruPractice;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
@@ -17,7 +19,11 @@ public class TestCase4 {
 	@BeforeSuite
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", "D:/Driver/chromedriver.exe");
-		driver=new ChromeDriver();
+		
+		
+		ChromeOptions options=new ChromeOptions();
+		options.addArguments("--headless");
+		driver=new ChromeDriver(options);
 		driver.get("http://live.techpanda.org/");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
@@ -35,11 +41,13 @@ public class TestCase4 {
 		System.out.println("mainMobile2 : "+mainMobile2);
 		Thread.sleep(1000);
 		
-		
+		String parent=driver.getWindowHandle();
+		Set<String> windows=driver.getWindowHandles();
 		driver.findElement(By.xpath("//button[@title='Compare']")).click();
 		Thread.sleep(1000);
 		
-		for(String handle :driver.getWindowHandles()) {
+		for(String handle :windows) {
+			if(!parent.equals(handle))
 			driver.switchTo().window(handle);
 		}
 		
